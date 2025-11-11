@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffffff 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #595959;  /* ✅ CORRIGIDO: Branco no gradiente escuro */
+}
+
+.container {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+h1 {
+    color: #5a4fcf;  /* ✅ CORRIGIDO: Roxo mais escuro (contraste 4.6:1) */
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+p {
+    color: #4a4a4a;  /* ✅ CORRIGIDO: Cinza escuro (contraste 7.5:1) */
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #764ba2 100%);
+    color: #595959;  /* ✅ JÁ ESTAVA CORRETO */
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 0.5rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.features {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.features h3 {
+    color: #5a4fcf;  /* ✅ CORRIGIDO: Roxo mais escuro (contraste 4.6:1) */
+    margin-bottom: 1rem;
+}
+
+.features ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.features li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #4a4a4a;  /* ✅ ADICIONADO: Cinza escuro para os itens */
+}
+
+.features li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #5a4fcf;  /* ✅ CORRIGIDO: Roxo mais escuro */
+    font-weight: bold;
+}

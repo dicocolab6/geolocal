@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema MVC</title>
+    <link rel="stylesheet" href="/css/style_login.css">
+</head>
+<body>
+    <div class="container">
+        <h2>🔐 Acesso ao Sistema</h2>
+
+        <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="login">Login</button>
+            <button class="tab-btn" data-tab="register">Registrar</button>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <!-- Formulário de Login -->
+        <div id="login-form" class="form-content active">
+            <form id="form-login">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Senha</label>
+                    <input type="password" id="login-password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn" id="login-btn">Entrar</button>
+            </form>
+        </div>
+
+        <!-- Formulário de Registro -->
+        <div id="register-form" class="form-content">
+            <form id="form-register">
+                <div class="form-group">
+                    <label for="register-name">Nome Completo</label>
+                    <input type="text" id="register-name" required placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Senha</label>
+                    <input type="password" id="register-password" required placeholder="••••••••" minlength="6">
+                </div>
+                <button type="submit" class="btn" id="register-btn">Criar Conta</button>
+            </form>
+        </div>
+
+        <div class="back-link">
+            <a href="/">← Voltar para home</a>
+        </div>
+    </div>
+
+    <script src="/js/login.js"></script>
+</body>
+</html>
