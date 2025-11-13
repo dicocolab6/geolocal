@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Captura de Localização - Parente</title>
-    <link rel="stylesheet" href="/css/style_dashboard.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Captura de Localização - Parente</title>
+  <link rel="stylesheet" href="/css/style_dashboard.css">
+  <style>
+    .debug-box { background:#0f172a; color:#e5e7eb; padding:12px; border-radius:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:13px; line-height:1.4; }
+    .debug-box b { color:#93c5fd; }
+    .debug-line { margin:4px 0; }
+    .ok { color:#86efac; }
+    .warn { color:#facc15; }
+    .err { color:#fda4af; }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <div class="header-content">
-            <h1>📍 Captura de Localização</h1>
-            <div class="user-info">
-                <span class="user-name" id="parente-name">Carregando...</span>
-                <button class="btn-logout" id="btn-logout">Sair</button>
-            </div>
-        </div>
+  <div class="header">
+    <div class="header-content">
+      <h1>📍 Captura de Localização</h1>
+      <div class="user-info">
+        <span class="user-name" id="parente-name">Carregando...</span>
+        <button class="btn-logout" id="btn-logout">Sair</button>
+      </div>
     </div>
+  </div>
 
-    <div class="container">
-        <div class="card">
-            <h2 style="margin-bottom: 1rem;">Registrar coordenada atual</h2>
-            <div id="message" class="message"></div>
+  <div class="container">
+    <div class="card">
+      <h2 style="margin-bottom: 1rem;">Registrar coordenada atual</h2>
+      <div id="message" class="message"></div>
 
-            <div id="loading" class="loading" style="display: none;">
-                Processando...
-            </div>
+      <div id="loading" class="loading" style="display: none;">
+        Processando...
+      </div>
 
-            <div style="text-align: center; margin: 2em 0;">
-                <button class="btn" id="btn-captura" style="font-size:1.3em; padding: 1em 2em;">
-                    Capturar localização
-                </button>
-            </div>
+      <div style="text-align: center; margin: 2em 0;">
+        <button class="btn" id="btn-captura" style="font-size:1.3em; padding: 1em 2em;">Capturar localização</button>
+      </div>
 
-            <div id="result" style="text-align: center; font-size:1.1em; margin-top:2em;"></div>
-        </div>
+      <div id="result" style="text-align: center; font-size:1.1em; margin-top:1em;"></div>
+
+      <h3 style="margin-top:2rem;">Debug</h3>
+      <div id="debug" class="debug-box"></div>
     </div>
+  </div>
 
-    <script src="/js/suporte_captura.js"></script>
+  <script src="/js/suporte_captura_debug.js"></script>
 </body>
 </html>
+
 
 
 
@@ -86,4 +96,5 @@
 
 
  -->
+
 
