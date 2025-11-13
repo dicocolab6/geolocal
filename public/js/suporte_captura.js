@@ -129,3 +129,4 @@ document.getElementById('btn-captura').onclick = function () {
 //         });
 
 //       };
+
