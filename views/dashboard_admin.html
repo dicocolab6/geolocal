@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin</title>
+  <link rel="stylesheet" href="/css/style_dashboard.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <h1>🛡️ Painel do Administrador</h1>
+      <div class="user-info">
+        <span class="user-name" id="admin-name">Carregando...</span>
+        <button class="btn-logout" id="btn-logout">Sair</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>Painel Restrito</h2>
+      <div>
+        <p>Bem-vindo, <b id="admin-welcome-name"></b>. Aqui ficará a área de administração!</p>
+        <!-- Aqui você vai inserir cards, tabelas, mapa etc conforme as partes do seu projeto -->
+         <div id="map" style="width:100%; max-width:960px; height:520px; margin:2em auto; border:1px solid #ddd;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/dashboard_admin.js"></script>
+  
+  
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="/js/admin_mapa.js"></script>
+
+</body>
+</html>
