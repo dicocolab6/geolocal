@@ -1,0 +1,5 @@
+ .admin-login-card { margin: 6em auto; max-width: 340px; padding: 2em; background: #fff; border-radius: 6px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+    .admin-login-card h2 { text-align: center; margin-bottom: 1.5em; }
+    .admin-login-card input { width: 100%; padding: 10px; margin-bottom: 1em; }
+    .admin-login-card button { width: 100%; font-size: 1.1em; }
+    #admin-login-msg { text-align: center; margin-top: 1em; color: #e63946; }
