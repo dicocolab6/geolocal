@@ -1,3 +1,5 @@
+// /public/js/captura-localizacao-mapa.js
+// Captura e exibição de localização no mapa para parentes
 // Mostrar nome do parente
 const parente = JSON.parse(localStorage.getItem('parente'));
 document.getElementById('parente-name').textContent = parente ? parente.nome : 'Parente';

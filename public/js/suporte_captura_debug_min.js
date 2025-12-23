@@ -1,3 +1,4 @@
+// /public/js/suporte_captura_debug_min.js
 // Utilidades de debug
 const $d = document.getElementById.bind(document);
 const debugEl = $d('debug');

@@ -88,16 +88,21 @@ function handleTableClick(e) {
 
 async function handleSubmit(e) {
     e.preventDefault();
+
     const nome = document.getElementById('user-name-input').value;
     const email = document.getElementById('user-email-input').value;
     const senha = document.getElementById('user-password-input').value;
+    const android_id =
+        document.getElementById('user-android-id-input').value || null;
+
     if (currentMode === 'create') {
-        await createParente({ nome, email, senha });
+        await createParente({ nome, email, senha, android_id });
     } else {
         const id = document.getElementById('user-id').value;
-        await updateParente(id, { nome, email });
+        await updateParente(id, { nome, email, android_id });
     }
 }
+
 
 // ================================
 // FUNÇÕES DE MENSAGEM
@@ -178,6 +183,7 @@ function displayParentes(parentes) {
             <td>${parente.id_par}</td>
             <td>${parente.nome}</td>
             <td>${parente.email}</td>
+            <td>${parente.android_id || ''}</td>
             <td>${new Date(parente.criado_em).toLocaleDateString('pt-BR')}</td>
             <td class="actions">
                 <button class="btn btn-sm btn-warning">Editar</button>
@@ -312,21 +318,38 @@ function openModal(mode, parente = null) {
     const modal = document.getElementById('user-modal');
     const form = document.getElementById('user-form');
     const passwordField = document.getElementById('password-group');
+
     form.reset();
+
     if (mode === 'create') {
         document.getElementById('modal-title').textContent = 'Novo Parente';
         document.getElementById('submit-btn').textContent = 'Criar Parente';
         passwordField.style.display = DISPLAY_STYLES.BLOCK;
         document.getElementById('user-password-input').required = true;
+
+        // 🔹 LIMPA android_id no modo criação
+        document.getElementById('user-android-id-input').value = '';
+
     } else {
         document.getElementById('modal-title').textContent = 'Editar Parente';
         document.getElementById('submit-btn').textContent = 'Atualizar Parente';
+
         document.getElementById('user-id').value = parente.id_par;
         document.getElementById('user-name-input').value = parente.nome;
         document.getElementById('user-email-input').value = parente.email;
+
+        // 🔥 🔥 🔥 A LINHA QUE VOCÊ PERGUNTOU É EXATAMENTE AQUI
+        document.getElementById('user-android-id-input').value =
+            parente.android_id || '';
+        // if (parente && 'android_id' in parente) {
+        //     document.getElementById('user-android-id-input').value =
+        //         parente.android_id || '';
+        // }
+
         passwordField.style.display = DISPLAY_STYLES.NONE;
         document.getElementById('user-password-input').required = false;
     }
+
     modal.classList.add('active');
 }
 

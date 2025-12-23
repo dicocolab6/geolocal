@@ -1,4 +1,4 @@
-(async function () {
+(async function () { 
   const token = localStorage.getItem('admin-token');
   if (!token) {
     alert('Sessão de admin expirada. Faça login novamente.');
