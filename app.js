@@ -17,6 +17,7 @@ const adminAuthRoutes = require('./routes/adminAuthRoutes');
 const adminMapaRoutes = require('./routes/adminMapaRoutes');
 const runMigrations = require('./database/migrate');
 const webhookLocalizacaoRoutes = require('./routes/webhookLocalizacaoRoutes');
+const mobileRelacaoRoutes = require('./routes/mobileRelacaoRoutes');
 
 //Importar middlewares
 const errorMiddleware = require('./middlewares/errorMiddleware');
@@ -155,6 +156,11 @@ app.use('/api/relacoes', relacaoRoutes);
 app.use('/api/admin-auth', adminAuthRoutes);
 app.use('/api/admin', adminMapaRoutes);
 app.use('/api/webhook', webhookLocalizacaoRoutes);
+app.use('/api/mobile', mobileRelacaoRoutes);
+
+//===========================================
+//        ROTA 404 - NÃO ENCONTRADA
+//===========================================
 
 // Rota 404 - Não encontrada
 app.use((req, res) => {
