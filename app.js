@@ -35,16 +35,21 @@ app.set('trust proxy', true);
 
 //Segurança HTTP headers
 //app.use(helmet());
-// Helmet com segurança máxima
+
+// Helmet com segurança máxima liberando o leaflet
 app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "https://unpkg.com"],    // Permite scripts do Leaflet CDN
-        styleSrc: ["'self'", "'unsafe-inline'", "https://unpkg.com"], // Permite CSS do Leaflet
+        scriptSrc: ["'self'", "https://unpkg.com"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://unpkg.com"],
         imgSrc: ["'self'", "data:", "https:"],
-        connectSrc: ["'self'"],
+        connectSrc: [
+          "'self'",
+          "https://unpkg.com",
+          "https://tile.openstreetmap.org"
+        ],
         fontSrc: ["'self'", "data:"],
         objectSrc: ["'none'"],
         mediaSrc: ["'self'"],
@@ -54,6 +59,26 @@ app.use(
     crossOriginEmbedderPolicy: false,
   })
 );
+
+// Helmet com segurança máxima
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: {
+//       directives: {
+//         defaultSrc: ["'self'"],
+//         scriptSrc: ["'self'", "https://unpkg.com"],    // Permite scripts do Leaflet CDN
+//         styleSrc: ["'self'", "'unsafe-inline'", "https://unpkg.com"], // Permite CSS do Leaflet
+//         imgSrc: ["'self'", "data:", "https:"],
+//         connectSrc: ["'self'"],
+//         fontSrc: ["'self'", "data:"],
+//         objectSrc: ["'none'"],
+//         mediaSrc: ["'self'"],
+//         frameSrc: ["'none'"],
+//       },
+//     },
+//     crossOriginEmbedderPolicy: false,
+//   })
+// );
 
 // app.use(
 //   helmet({
