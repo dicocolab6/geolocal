@@ -45,28 +45,23 @@ app.use(
         defaultSrc: ["'self'"],
 
         scriptSrc: [
-          "'self'",
-          "https://unpkg.com"
+          "'self'"
         ],
 
         styleSrc: [
           "'self'",
-          "'unsafe-inline'",
-          "https://unpkg.com"
+          "'unsafe-inline'"
         ],
 
         imgSrc: [
           "'self'",
           "data:",
           "blob:",
-          "https://*.tile.openstreetmap.org",
-          "https://tile.openstreetmap.org",
-          "https://unpkg.com"
+          "https://*.tile.openstreetmap.org"
         ],
 
         connectSrc: [
-          "'self'",
-          "https://unpkg.com"
+          "'self'"
         ],
 
         fontSrc: [
@@ -75,13 +70,9 @@ app.use(
         ],
 
         objectSrc: ["'none'"],
-
         frameSrc: ["'none'"],
-
         mediaSrc: ["'self'"],
-
         baseUri: ["'self'"],
-
         formAction: ["'self'"]
 
       }
