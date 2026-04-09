@@ -58,8 +58,10 @@ app.use(
         imgSrc: [
           "'self'",
           "data:",
+          "blob:",
           "https://*.tile.openstreetmap.org",
-          "https://tile.openstreetmap.org"
+          "https://tile.openstreetmap.org",
+          "https://unpkg.com"
         ],
 
         connectSrc: [
@@ -74,9 +76,9 @@ app.use(
 
         objectSrc: ["'none'"],
 
-        mediaSrc: ["'self'"],
-
         frameSrc: ["'none'"],
+
+        mediaSrc: ["'self'"],
 
         baseUri: ["'self'"],
 
