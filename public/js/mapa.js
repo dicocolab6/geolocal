@@ -43,48 +43,122 @@
 
 // /js/mapa.js
 
-// Somente cuidar do mapa Leaflet e marcadores.
+// // Somente cuidar do mapa Leaflet e marcadores.
+// document.addEventListener('DOMContentLoaded', function() {
+
+//   delete L.Icon.Default.prototype._getIconUrl;
+
+// L.Icon.Default.mergeOptions({
+//   iconRetinaUrl: '/images/marker-icon-2x.png',
+//   iconUrl: '/images/marker-icon.png',
+//   shadowUrl: '/images/marker-shadow.png'
+// });
+
+//   const group = new L.featureGroup();
+
+// const marker = L.marker([loc.data.coord_x, loc.data.coord_y]).addTo(group);
+// group.addTo(map);
+
+// map.fitBounds(group.getBounds());
+//   // Inicializa mapa centrado no Brasil
+//   var map = L.map('map').setView([-14.2, -51.9], 4);
+//   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     maxZoom: 19,
+//     attribution: '© OpenStreetMap'
+//   }).addTo(map);
+
+//   const token = localStorage.getItem('token');
+//   if (!token) return;
+
+//   // Busca os parentes cadastrados
+//   fetch('/api/parentes', {
+//     headers: { 'Authorization': `Bearer ${token}` }
+//   })
+//   .then(r => r.json())
+//   .then(data => {
+//     const parentes = data.data || [];
+//     parentes.forEach(parente => {
+//       // Para cada parente, busca sua última localização
+//       fetch(`/api/relacoes/ultima/${parente.id_par}`, {
+//         headers: { 'Authorization': `Bearer ${token}` }
+//       })
+//       .then(r2 => r2.json())
+//       .then(loc => {
+//         if (loc.data && loc.data.coord_x && loc.data.coord_y) {
+//           // Adiciona marcador no mapa!
+//           const marker = L.marker([loc.data.coord_x, loc.data.coord_y]).addTo(map);
+//           marker.bindPopup(
+//             `<b>${parente.nome}</b><br>Latitude: ${loc.data.coord_x}<br>Longitude: ${loc.data.coord_y}<br><small>${new Date(loc.data.capturado_em).toLocaleString('pt-BR')}</small>`
+//           );
+//         }
+//       });
+//     });
+//   });
+// });
+
+// mapa.js de cima mas com centralização de pontos
 document.addEventListener('DOMContentLoaded', function() {
 
   delete L.Icon.Default.prototype._getIconUrl;
 
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: '/images/marker-icon-2x.png',
-  iconUrl: '/images/marker-icon.png',
-  shadowUrl: '/images/marker-shadow.png'
-});
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl: '/images/marker-icon-2x.png',
+    iconUrl: '/images/marker-icon.png',
+    shadowUrl: '/images/marker-shadow.png'
+  });
+
   // Inicializa mapa centrado no Brasil
-  var map = L.map('map').setView([-14.2, -51.9], 4);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  const map = L.map('map').setView([-14.2, -51.9], 4);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: '© OpenStreetMap'
+    attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
+
+  const group = new L.featureGroup().addTo(map);
 
   const token = localStorage.getItem('token');
   if (!token) return;
 
-  // Busca os parentes cadastrados
   fetch('/api/parentes', {
     headers: { 'Authorization': `Bearer ${token}` }
   })
   .then(r => r.json())
   .then(data => {
+
     const parentes = data.data || [];
+
     parentes.forEach(parente => {
-      // Para cada parente, busca sua última localização
+
       fetch(`/api/relacoes/ultima/${parente.id_par}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(r2 => r2.json())
       .then(loc => {
+
         if (loc.data && loc.data.coord_x && loc.data.coord_y) {
-          // Adiciona marcador no mapa!
-          const marker = L.marker([loc.data.coord_x, loc.data.coord_y]).addTo(map);
-          marker.bindPopup(
-            `<b>${parente.nome}</b><br>Latitude: ${loc.data.coord_x}<br>Longitude: ${loc.data.coord_y}<br><small>${new Date(loc.data.capturado_em).toLocaleString('pt-BR')}</small>`
-          );
+
+          const marker = L.marker([
+            loc.data.coord_x,
+            loc.data.coord_y
+          ]).addTo(group);
+
+          marker.bindPopup(`
+            <b>${parente.nome}</b><br>
+            Latitude: ${loc.data.coord_x}<br>
+            Longitude: ${loc.data.coord_y}<br>
+            <small>${new Date(loc.data.capturado_em).toLocaleString('pt-BR')}</small>
+          `);
+
+          // Ajusta o zoom conforme os marcadores
+          map.fitBounds(group.getBounds(), { padding: [40, 40] });
+
         }
+
       });
+
     });
+
   });
+
 });
