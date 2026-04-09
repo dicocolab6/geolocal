@@ -41,25 +41,57 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
+
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "https://unpkg.com"],
-        styleSrc: ["'self'", "'unsafe-inline'", "https://unpkg.com"],
-        imgSrc: ["'self'", "data:", "https:"],
-        connectSrc: [
+
+        scriptSrc: [
           "'self'",
-          "https://unpkg.com",
+          "https://unpkg.com"
+        ],
+
+        styleSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          "https://unpkg.com"
+        ],
+
+        imgSrc: [
+          "'self'",
+          "data:",
+          "https://*.tile.openstreetmap.org",
           "https://tile.openstreetmap.org"
         ],
-        fontSrc: ["'self'", "data:"],
+
+        connectSrc: [
+          "'self'",
+          "https://unpkg.com"
+        ],
+
+        fontSrc: [
+          "'self'",
+          "data:"
+        ],
+
         objectSrc: ["'none'"],
+
         mediaSrc: ["'self'"],
+
         frameSrc: ["'none'"],
-      },
+
+        baseUri: ["'self'"],
+
+        formAction: ["'self'"]
+
+      }
     },
-    crossOriginEmbedderPolicy: false,
+
+    referrerPolicy: {
+      policy: "strict-origin-when-cross-origin"
+    },
+
+    crossOriginEmbedderPolicy: false
   })
 );
-
 // Helmet com segurança máxima
 // app.use(
 //   helmet({
