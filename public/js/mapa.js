@@ -45,6 +45,14 @@
 
 // Somente cuidar do mapa Leaflet e marcadores.
 document.addEventListener('DOMContentLoaded', function() {
+
+  delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: '/images/marker-icon-2x.png',
+  iconUrl: '/images/marker-icon.png',
+  shadowUrl: '/images/marker-shadow.png'
+});
   // Inicializa mapa centrado no Brasil
   var map = L.map('map').setView([-14.2, -51.9], 4);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
